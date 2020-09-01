@@ -21,16 +21,16 @@ class MpAppTests(unittest.TestCase):
         desired_caps['deviceName'] = '4f16a89e0804'  # 设备id
         desired_caps['autoLaunch'] = 'true'  # 是否自动启动
         desired_caps['app'] = PATH(
-            'apk/Nova_7.2.0_debug.apk'  # 安装包路径，放在该py文件的目录下
+            'apk/com.tencent.mp.apk'  # 安装包路径，放在该py文件的目录下
         )
-        desired_caps['appPackage'] = 'com.dianping.v1'  # 包名
+        desired_caps['appPackage'] = 'com.tencent.mp'  # 包名
         desired_caps['appActivity'] = 'com.dianping.main.guide.SplashScreenActivity'  # 启动的activity
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
     def tearDown(self):
         self.driver.quit()  # case执行完退出
 
-    def test_dpApp(self):  # 需要执行的case
+    def test_mpApp(self):  # 需要执行的case
         time.sleep(15)
         el = self.driver.find_element_by_xpath("//android.widget.TextView[contains(@text,'上海')]")  # 通过xpath找到定位框
         el.click()  # 点击定位框
